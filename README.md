@@ -10,7 +10,7 @@
 ```properties
 spring.datasource.platform=mysql
 db.num=1
-db.url.0=jdbc:mysql://${自己的地址:端口}/nacos?characterEncoding=utf8&connectTimeout=1 000&socketTimeout=3000&autoReconnect=true
+db.url.0=jdbc:mysql://${自己的地址:端口}/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
 db.user=${自己的username}
 db.password=${自己的password}
 ```
