@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service-question
+  cloud:
+    nacos:
+      config:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+        extension-configs:
+          - data-id: service-question.yml
+            group: DEFAULT_GROUP
+            refresh: true
