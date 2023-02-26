@@ -23,7 +23,7 @@ public class ResponseDate {
     /**
      * 是否成功
      */
-    private boolean isSuccess;
+    private boolean succeed;
     /**
      * 响应数据
      */
@@ -34,7 +34,7 @@ public class ResponseDate {
     public static ResponseDate success() {
         ResponseDate resp = new ResponseDate();
         resp.code = ResponseConstant.SuccessCode;
-        resp.isSuccess = true;
+        resp.succeed = true;
         resp.message = ResponseConstant.DefaultSuccessMessage;
         return resp;
     }
@@ -42,7 +42,7 @@ public class ResponseDate {
     public static ResponseDate failure() {
         ResponseDate resp = new ResponseDate();
         resp.code = ResponseConstant.FailCode;
-        resp.isSuccess = false;
+        resp.succeed = false;
         resp.message = ResponseConstant.DefaultFailMessage;
         return resp;
     }

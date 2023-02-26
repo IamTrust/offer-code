@@ -39,9 +39,9 @@ cmd startup.cmd -m standalone
 {
   "code":0,
   "message":"成功",
+  "succeed":true,
   "data":{
     "ping":"pong"
-  },
-  "success":true
+  }
 }
 ```
