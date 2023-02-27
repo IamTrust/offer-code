@@ -13,6 +13,12 @@
     <packaging>pom</packaging>
     <modules>
         <module>service-question</module>
+        <module>service-article</module>
+        <module>service-sample</module>
+        <module>service-user</module>
+        <module>service-judge</module>
+        <module>service-rank</module>
+        <module>service-code-analysis</module>
     </modules>
 
     <properties>
