@@ -1,3 +1,19 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : offer-code
+ Source Server Type    : MySQL
+ Source Server Version : 80031
+ Source Host           : localhost:3306
+ Source Schema         : nacos
+
+ Target Server Type    : MySQL
+ Target Server Version : 80031
+ File Encoding         : 65001
+
+ Date: 04/03/2023 15:24:28
+*/
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -24,7 +40,7 @@ CREATE TABLE `config_info` (
   `c_schema` text COLLATE utf8mb3_bin,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_configinfo_datagrouptenant` (`data_id`,`group_id`,`tenant_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin COMMENT='config_info';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin COMMENT='config_info';
 
 -- ----------------------------
 -- Records of config_info
@@ -32,6 +48,7 @@ CREATE TABLE `config_info` (
 BEGIN;
 INSERT INTO `config_info` (`id`, `data_id`, `group_id`, `content`, `md5`, `gmt_create`, `gmt_modified`, `src_user`, `src_ip`, `app_name`, `tenant_id`, `c_desc`, `c_use`, `effect`, `type`, `c_schema`) VALUES (1, 'service-question.yml', 'DEFAULT_GROUP', 'server:\n  port: 9001', '7eaa8d2ec3803de0dd025e2d96e83606', '2023-02-26 08:17:02', '2023-02-26 08:17:02', NULL, '172.17.0.1', '', '', 'question服务配置文件', NULL, NULL, 'yaml', NULL);
 INSERT INTO `config_info` (`id`, `data_id`, `group_id`, `content`, `md5`, `gmt_create`, `gmt_modified`, `src_user`, `src_ip`, `app_name`, `tenant_id`, `c_desc`, `c_use`, `effect`, `type`, `c_schema`) VALUES (2, 'gateway.yml', 'DEFAULT_GROUP', 'server:\n  port: 8088\nspring:\n  cloud:\n    # 网关配置\n    gateway:\n      discovery:\n        locator:\n          # 使用服务发现路由\n          enabled: true \n      # 转发规则配置    \n      routes:\n        - id: service-question\n          uri: lb://service-question\n          predicates:\n            - Path=/**', 'e4e1e3f8a1500eff3208a230c40cb66a', '2023-02-26 08:21:54', '2023-02-26 08:29:26', 'nacos', '172.17.0.1', '', '', '网关配置文件', '', '', 'yaml', '');
+INSERT INTO `config_info` (`id`, `data_id`, `group_id`, `content`, `md5`, `gmt_create`, `gmt_modified`, `src_user`, `src_ip`, `app_name`, `tenant_id`, `c_desc`, `c_use`, `effect`, `type`, `c_schema`) VALUES (5, 'base-config.yml', 'DEFAULT_GROUP', 'spring:\n  # 数据库连接信息\n  datasource:\n    driver-class-name: com.mysql.cj.jdbc.Driver\n    url: jdbc:mysql://localhost:3306/dbname\n    username: root\n    password: root\n  # redis 连接信息  \n  redis:\n    host: localhost\n  # 统一日期时间返回格式\n  jackson:\n    date-format: yyyy-MM-dd HH:mm:ss\n    time-zone: GMT+8\n# mybatis mapper 文件位置', '716f10e14bad6d04291b7025464116f0', '2023-03-04 07:21:02', '2023-03-04 07:21:02', NULL, '172.17.0.1', '', '', '公共基础配置信息。', NULL, NULL, 'yaml', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -181,7 +198,7 @@ CREATE TABLE `his_config_info` (
   KEY `idx_gmt_create` (`gmt_create`),
   KEY `idx_gmt_modified` (`gmt_modified`),
   KEY `idx_did` (`data_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin COMMENT='多租户改造';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin COMMENT='多租户改造';
 
 -- ----------------------------
 -- Records of his_config_info
@@ -191,6 +208,7 @@ INSERT INTO `his_config_info` (`id`, `nid`, `data_id`, `group_id`, `app_name`, `
 INSERT INTO `his_config_info` (`id`, `nid`, `data_id`, `group_id`, `app_name`, `content`, `md5`, `gmt_create`, `gmt_modified`, `src_user`, `src_ip`, `op_type`, `tenant_id`) VALUES (0, 2, 'gateway.yml', 'DEFAULT_GROUP', '', 'server:\n    port: 8088', '9549e682761229e6a26baa17a4784e7a', '2023-02-26 08:21:53', '2023-02-26 08:21:54', NULL, '172.17.0.1', 'I', '');
 INSERT INTO `his_config_info` (`id`, `nid`, `data_id`, `group_id`, `app_name`, `content`, `md5`, `gmt_create`, `gmt_modified`, `src_user`, `src_ip`, `op_type`, `tenant_id`) VALUES (2, 3, 'gateway.yml', 'DEFAULT_GROUP', '', 'server:\n    port: 8088', '9549e682761229e6a26baa17a4784e7a', '2023-02-26 08:27:19', '2023-02-26 08:27:19', 'nacos', '172.17.0.1', 'U', '');
 INSERT INTO `his_config_info` (`id`, `nid`, `data_id`, `group_id`, `app_name`, `content`, `md5`, `gmt_create`, `gmt_modified`, `src_user`, `src_ip`, `op_type`, `tenant_id`) VALUES (2, 4, 'gateway.yml', 'DEFAULT_GROUP', '', 'server:\n  port: 8088\nspring:\n  cloud:\n    # 网关配置\n    gateway:\n      discovery:\n        locator:\n          # 使用服务发现路由\n          enabled: true \n      # 转发规则配置    \n      routes:\n        - id: service-question\n          uri: lb://question\n          predicates:\n            - Path=/**', 'f746113ef470d99f77f8968c6a9a48d2', '2023-02-26 08:29:26', '2023-02-26 08:29:26', 'nacos', '172.17.0.1', 'U', '');
+INSERT INTO `his_config_info` (`id`, `nid`, `data_id`, `group_id`, `app_name`, `content`, `md5`, `gmt_create`, `gmt_modified`, `src_user`, `src_ip`, `op_type`, `tenant_id`) VALUES (0, 5, 'base-config.yml', 'DEFAULT_GROUP', '', 'spring:\n  # 数据库连接信息\n  datasource:\n    driver-class-name: com.mysql.cj.jdbc.Driver\n    url: jdbc:mysql://localhost:3306/dbname\n    username: root\n    password: root\n  # redis 连接信息  \n  redis:\n    host: localhost\n  # 统一日期时间返回格式\n  jackson:\n    date-format: yyyy-MM-dd HH:mm:ss\n    time-zone: GMT+8\n# mybatis mapper 文件位置', '716f10e14bad6d04291b7025464116f0', '2023-03-04 07:21:02', '2023-03-04 07:21:02', NULL, '172.17.0.1', 'I', '');
 COMMIT;
 
 -- ----------------------------

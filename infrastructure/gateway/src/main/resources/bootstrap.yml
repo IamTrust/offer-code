@@ -9,3 +9,6 @@ spring:
           - data-id: gateway.yml
             group: DEFAULT_GROUP
             refresh: true
+          - data-id: base-config.yml
+            group: DEFAULT_GROUP
+            refresh: true

@@ -32,6 +32,7 @@
         <aliyun.oss.sdk.version>3.15.1</aliyun.oss.sdk.version>
         <jodatime.version>2.10.1</jodatime.version>
         <spring.security.version>2.6.11</spring.security.version>
+        <spring.boot.admin.version>2.7.9</spring.boot.admin.version>
     </properties>
 
     <!--统一依赖管理-->
@@ -127,6 +128,22 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${spring.security.version}</version>
+            </dependency>
+            <!--SpringBoot Admin-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring.boot.admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>${spring.boot.admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring.boot.admin.version}</version>
             </dependency>
             <!--lombok-->
             <dependency>
